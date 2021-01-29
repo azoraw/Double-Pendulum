@@ -1,22 +1,23 @@
 buildscript {
-    
 
     repositories {
         mavenLocal()
         mavenCentral()
         maven { url "https://plugins.gradle.org/m2/" }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
         jcenter()
         google()
     }
     dependencies {
-        
+        classpath "io.freefair.gradle:lombok-plugin:5.3.0"
+
 
     }
 }
 
 allprojects {
-    apply plugin: "eclipse"
+    apply plugin: "io.freefair.lombok"
 
     version = '1.0'
     ext {
@@ -36,6 +37,7 @@ allprojects {
         google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 }
 
@@ -47,7 +49,7 @@ project(":desktop") {
         implementation project(":core")
         api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        
+
     }
 }
 
@@ -57,6 +59,6 @@ project(":core") {
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        
+
     }
 }
