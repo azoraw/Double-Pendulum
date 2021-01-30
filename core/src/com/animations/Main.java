@@ -5,8 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Polygon;
-
 
 public class Main extends ApplicationAdapter {
 
@@ -19,7 +17,6 @@ public class Main extends ApplicationAdapter {
         state = new State();
     }
 
-
     @Override
     public void render() {
         Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -27,17 +24,15 @@ public class Main extends ApplicationAdapter {
 
         sr.begin(ShapeRenderer.ShapeType.Line);
         sr.setColor(Color.WHITE);
-        sr.line(state.getX0(), state.getY0(), state.getX1(), state.getY1());
-        sr.line(state.getX1(), state.getY1(), state.getX2(), state.getY2());
+        sr.line((float) state.getX0(), (float) state.getY0(), (float) state.getX1(), (float) state.getY1());
+        sr.line((float) state.getX1(), (float) state.getY1(), (float) state.getX2(), (float) state.getY2());
         sr.end();
 
         sr.begin(ShapeRenderer.ShapeType.Filled);
-        sr.setColor(Color.RED);
-        sr.circle(state.getX0(), state.getY0(), 20);
         sr.setColor(Color.BLUE);
-        sr.circle(state.getX1(), state.getY1(), 20);
+        sr.circle((float) state.getX1(), (float) state.getY1(), state.getM1());
         sr.setColor(Color.GREEN);
-        sr.circle(state.getX2(), state.getY2(), 20);
+        sr.circle((float) state.getX2(), (float) state.getY2(), state.getM2());
         sr.end();
 
         state.updateState();
